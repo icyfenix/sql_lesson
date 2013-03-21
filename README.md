@@ -198,11 +198,13 @@ We can add in a WHERE clause to show only the lines for the student with the git
         ON Students.github = Grades.student_github
         INNER JOIN Projects
         ON Grades.project_title = Projects.title
-        WHERE github = "chriszf";
+        WHERE Grades.github = "chriszf";
 
 Now that everything looks good, we once again filter down to only the columns we want. For the final step, write the query that selects only the columns that match our example table above:
 
     first_name, last_name, project_title, grade, max_grade
+
+You may have noticed a different way of referring to columns here - we reference them by table_name.column_name. This is because we have a github column in both tables, and SQL can't be sure which one we mean. If we refer to it by it's "full name", then we can make sure SQL knows where we want it to pull the data from.
 
 Now, try selecting the rows for different users in our system.
 
